@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<VBox spacing="10.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.MaterialController">
+    <TableView fx:id="tablaMateriales" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="columnaIdMaterial" prefWidth="50.0" text="ID"/>
+            <TableColumn fx:id="columnaTipoMaterial" prefWidth="150.0" text="Tipo"/>
+            <TableColumn fx:id="columnaMarcaMaterial" prefWidth="150.0" text="Marca"/>
+            <TableColumn fx:id="columnaModeloMaterial" prefWidth="150.0" text="Modelo"/>
+            <TableColumn fx:id="columnaNotasMaterial" prefWidth="200.0" text="Notas"/>
+            <TableColumn fx:id="columnaActivoMaterial" prefWidth="100.0" text="Estado"/>
+        </columns>
+    </TableView>
+
+    <VBox spacing="10.0">
+        <HBox spacing="10.0" alignment="CENTER_LEFT">
+            <TextField fx:id="inputTipoMaterial" promptText="Tipo (Ej. Portátil)" HBox.hgrow="ALWAYS"/>
+            <TextField fx:id="inputMarcaMaterial" promptText="Marca" HBox.hgrow="ALWAYS"/>
+            <TextField fx:id="inputModeloMaterial" promptText="Modelo" HBox.hgrow="ALWAYS"/>
+        </HBox>
+        <HBox spacing="10.0" alignment="CENTER_LEFT">
+            <TextField fx:id="inputNotasMaterial" promptText="Notas adicionales" HBox.hgrow="ALWAYS"/>
+            <TextField fx:id="inputOficinaMaterial" promptText="ID de Oficina" prefWidth="150.0"/>
+            <ComboBox fx:id="comboEstadoMaterial" promptText="Estado" prefWidth="150.0"/>
+        </HBox>
+        <HBox spacing="10.0" alignment="CENTER">
+            <Button onAction="#crearMaterial" text="Crear" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+            <Button onAction="#modificarMaterial" text="Actualizar" style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+            <Button onAction="#darDeBajaMaterial" text="Dar de baja" style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+            <Button onAction="#darDeAltaMaterial" text="Dar de alta" style="-fx-background-color: #ff9800; -fx-text-fill: white;"/>
+        </HBox>
+    </VBox>
+    <Label fx:id="labelAvisosMaterial" textFill="RED">
+        <font>
+            <Font name="System Bold" size="14.0"/>
+        </font>
+    </Label>
+</VBox>

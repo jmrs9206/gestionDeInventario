@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<VBox spacing="10.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.OficinaController">
+    <TableView fx:id="tablaOficinas" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="columnaIdOficina" prefWidth="100.0" text="ID"/>
+            <TableColumn fx:id="columnaNombreOficina" prefWidth="400.0" text="Nombre"/>
+            <TableColumn fx:id="columnaActivoOficina" prefWidth="150.0" text="Estado"/>
+        </columns>
+    </TableView>
+
+    <VBox spacing="10.0">
+        <HBox spacing="10.0" alignment="CENTER_LEFT">
+            <TextField fx:id="inputNombreOficina" promptText="Nombre de la oficina" HBox.hgrow="ALWAYS"/>
+        </HBox>
+        <HBox spacing="10.0" alignment="CENTER">
+            <Button onAction="#crearOficina" text="Crear" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+            <Button onAction="#modificarOficina" text="Actualizar" style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+            <Button onAction="#cerrarOficina" text="Dar de Baja" style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+            <Button onAction="#reabrirOficina" text="Dar de Alta" style="-fx-background-color: #ff9800; -fx-text-fill: white;"/>
+        </HBox>
+    </VBox>
+    <Label fx:id="labelAvisosOficina" textFill="RED">
+        <font>
+            <Font name="System Bold" size="14.0"/>
+        </font>
+    </Label>
+</VBox>

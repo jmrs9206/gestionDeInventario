@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" prefHeight="700.0" prefWidth="1000.0" spacing="20.0" xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.DashboardController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <HBox alignment="CENTER_LEFT" spacing="20.0">
+        <Label fx:id="textoBienvenida" text="Bienvenido al Dashboard">
+            <font>
+                <Font size="24.0"/>
+            </font>
+        </Label>
+        <HBox HBox.hgrow="ALWAYS"/>
+        <Button onAction="#botonCerrarSesion" text="Cerrar Sesión"/>
+    </HBox>
+
+    <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+        <Tab text="Usuarios">
+            <fx:include fx:id="vistaUsuarios" source="dashboard-usuarios.fxml"/>
+        </Tab>
+        <Tab text="Oficinas">
+            <fx:include fx:id="vistaOficinas" source="dashboard-oficinas.fxml"/>
+        </Tab>
+        <Tab text="Materiales">
+            <fx:include fx:id="vistaMateriales" source="dashboard-materiales.fxml"/>
+        </Tab>
+        <Tab text="Historial Materiales">
+            <fx:include fx:id="vistaHistorial" source="dashboard-historial.fxml"/>
+        </Tab>
+    </TabPane>
+</VBox>

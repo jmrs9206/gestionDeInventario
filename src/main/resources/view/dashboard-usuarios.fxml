@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<VBox spacing="10.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.UsuarioController">
+    <TableView fx:id="tablaUsuarios" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="columnaIdUsuario" prefWidth="75.0" text="ID"/>
+            <TableColumn fx:id="columnaCorreoUsuario" prefWidth="300.0" text="Email"/>
+            <TableColumn fx:id="columnaActivoUsuario" prefWidth="100.0" text="Estado"/>
+        </columns>
+    </TableView>
+
+    <VBox spacing="10.0">
+        <HBox spacing="10.0" alignment="CENTER_LEFT">
+            <TextField fx:id="inputNombreUsuario" promptText="Nombre de usuario" HBox.hgrow="ALWAYS"/>
+            <TextField fx:id="inputCorreoUsuario" promptText="Correo electrónico" HBox.hgrow="ALWAYS"/>
+        </HBox>
+        <HBox spacing="10.0" alignment="CENTER_LEFT">
+            <PasswordField fx:id="inputContrasenaUsuario" promptText="Contraseña" HBox.hgrow="ALWAYS"/>
+        </HBox>
+        <HBox spacing="10.0" alignment="CENTER">
+            <Button onAction="#crearUsuario" text="Guardar" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+            <Button onAction="#modificarUsuario" text="Actualizar" style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+            <Button onAction="#darDeBajaUsuario" text="Dar de baja" style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+            <Button onAction="#darDeAltaUsuario" text="Dar de alta" style="-fx-background-color: #ff9800; -fx-text-fill: white;"/>
+        </HBox>
+    </VBox>
+    <Label fx:id="labelAvisosUsuario" textFill="RED">
+        <font>
+            <Font name="System Bold" size="14.0"/>
+        </font>
+    </Label>
+</VBox>
