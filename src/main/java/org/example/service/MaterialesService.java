@@ -7,12 +7,18 @@ import org.example.model.Material;
 import org.example.model.enums.EstadoMaterial;
 
 import java.util.List;
-
+/**
+     * Representa la clase MaterialesService.
+     */
 public class MaterialesService {
 
     private MaterialDAO materiales;
     private HistorialMaterialesDAO historialDB;
-
+    /**
+    * Constructor de MaterialesService.
+    * @param db valor de db
+    * @param historial valor de historial
+    */
     public MaterialesService(MaterialDAO db, HistorialMaterialesDAO historial) {
         this.materiales = db;
         this.historialDB = historial;
@@ -47,7 +53,12 @@ public class MaterialesService {
             );
         }
     }
-
+    /**
+    * Ejecuta la acción modificarDatosMaterial.
+    * @param materialAModificar el parámetro materialAModificar
+    * @param idUsuario el parámetro idUsuario
+    * @throws DatosException si ocurre un error
+    */
     public void modificarDatosMaterial(Material materialAModificar, int idUsuario) throws DatosException {
         if (materialAModificar == null || materialAModificar.getIdMaterial() <= 0)
             throw new DatosException("El material no es válido");
@@ -110,7 +121,11 @@ public class MaterialesService {
             );
         }
     }
-
+    /**
+    * Ejecuta la acción verTodos.
+    * @return el resultado de tipo List<Material>
+    * @throws DatosException si ocurre un error
+    */
     public List<Material> verTodos() throws DatosException {
         return materiales.obtenerTodosLosMateriales();
     }

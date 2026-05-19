@@ -13,7 +13,9 @@ import org.example.service.OficinasService;
 import org.example.service.UsuariosService;
 
 import java.io.IOException;
-
+/**
+     * Representa la clase DashboardController.
+     */
 public class DashboardController {
 
     @FXML
@@ -34,34 +36,54 @@ public class DashboardController {
     private MaterialController vistaMaterialesController;
     @FXML
     private HistorialController vistaHistorialController;
-
+    /**
+    * Ejecuta la acción guardarUsuarioQueUsaElPrograma.
+    * @param usuario el parámetro usuario
+    */
     public void guardarUsuarioQueUsaElPrograma(Usuario usuario) {
         this.usuarioQueHaEntrado = usuario;
         if (usuarioQueHaEntrado != null) {
             textoBienvenida.setText("¡Hola de nuevo, " + usuarioQueHaEntrado.getCorreoElectronico() + "!");
         }
     }
-
+    /**
+    * Ejecuta la acción guardarVentana.
+    * @param ventana el parámetro ventana
+    */
     public void guardarVentana(Stage ventana) {
         this.ventanaActual = ventana;
     }
-
+    /**
+    * Ejecuta la acción recibirServicioUsuarios.
+    * @param servicio el parámetro servicio
+    */
     public void recibirServicioUsuarios(UsuariosService servicio) {
         this.servicioDeUsuarios = servicio;
     }
-
+    /**
+    * Ejecuta la acción recibirServicioOficinas.
+    * @param servicio el parámetro servicio
+    */
     public void recibirServicioOficinas(OficinasService servicio) {
         this.servicioDeOficinas = servicio;
     }
-
+    /**
+    * Ejecuta la acción recibirServicioMateriales.
+    * @param servicio el parámetro servicio
+    */
     public void recibirServicioMateriales(MaterialesService servicio) {
         this.servicioDeMateriales = servicio;
     }
-
+    /**
+    * Ejecuta la acción recibirServicioHistorial.
+    * @param servicio el parámetro servicio
+    */
     public void recibirServicioHistorial(HistorialMaterialesService servicio) {
         this.servicioDeHistorial = servicio;
     }
-
+    /**
+    * Ejecuta la acción prepararTablas.
+    */
     public void prepararTablas() {
         if (usuarioQueHaEntrado != null) {
             // Le pasamos los servicios a los controladores hijos
@@ -83,7 +105,9 @@ public class DashboardController {
             cargarListaHistorial();
         }
     }
-
+    /**
+    * Ejecuta la acción cargarListaHistorial.
+    */
     public void cargarListaHistorial() {
         if (vistaHistorialController != null) {
             vistaHistorialController.cargarListaHistorial();
@@ -91,6 +115,9 @@ public class DashboardController {
     }
 
     @FXML
+    /**
+    * Ejecuta la acción botonCerrarSesion.
+    */
     private void botonCerrarSesion() {
         try {
             FXMLLoader cargador = new FXMLLoader(getClass().getResource("/view/login.fxml"));

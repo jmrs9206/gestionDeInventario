@@ -9,10 +9,17 @@ import org.example.model.enums.EstadoMaterial;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+     * Representa la clase HistorialMaterialesDAOImpl.
+     */
 public class HistorialMaterialesDAOImpl implements HistorialMaterialesDAO {
 
     @Override
+    /**
+    * Ejecuta la acción obtenerHistorialCompleto.
+    * @return el resultado de tipo List<HistorialMateriales>
+    * @throws DatosException si ocurre un error
+    */
     public List<HistorialMateriales> obtenerHistorialCompleto() throws DatosException {
         List<HistorialMateriales> historial = new ArrayList<>();
 

@@ -16,7 +16,9 @@ import org.example.service.OficinasService;
 import org.example.service.MaterialesService;
 
 import java.util.List;
-
+/**
+     * Representa la clase MaterialController.
+     */
 public class MaterialController {
     
     private MaterialesService servicioDeMateriales;
@@ -42,22 +44,35 @@ public class MaterialController {
     private Material materialSeleccionado;
     private Usuario usuarioLogueado;
     private Runnable alCambiarHistorial;
-
+    /**
+    * Ejecuta la acción setServicios.
+    * @param servicio el parámetro servicio
+    * @param servicioOficinas el parámetro servicioOficinas
+    */
     public void setServicios(MaterialesService servicio, OficinasService servicioOficinas) {
         this.servicioDeMateriales = servicio;
         this.servicioDeOficinas = servicioOficinas;
         cargarTabla();
     }
-
+    /**
+    * Ejecuta la acción asignarUsuarioLogueado.
+    * @param usuario el parámetro usuario
+    */
     public void asignarUsuarioLogueado(Usuario usuario) {
         this.usuarioLogueado = usuario;
     }
-
+    /**
+    * Ejecuta la acción setAlCambiarHistorial.
+    * @param alCambiarHistorial el parámetro alCambiarHistorial
+    */
     public void setAlCambiarHistorial(Runnable alCambiarHistorial) {
         this.alCambiarHistorial = alCambiarHistorial;
     }
 
     @FXML
+    /**
+    * Ejecuta la acción initialize.
+    */
     private void initialize() {
         inicializarColumnas();
         configurarSeleccionTabla();
@@ -65,7 +80,9 @@ public class MaterialController {
             comboEstadoMaterial.setItems(FXCollections.observableArrayList(EstadoMaterial.values()));
         }
     }
-
+    /**
+    * Ejecuta la acción inicializarColumnas.
+    */
     private void inicializarColumnas() {
         if (columnaIdMaterial != null) columnaIdMaterial.setCellValueFactory(new PropertyValueFactory<>("idMaterial"));
         if (columnaTipoMaterial != null) columnaTipoMaterial.setCellValueFactory(new PropertyValueFactory<>("tipoMaterial"));
@@ -74,7 +91,9 @@ public class MaterialController {
         if (columnaNotasMaterial != null) columnaNotasMaterial.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         if (columnaActivoMaterial != null) columnaActivoMaterial.setCellValueFactory(new PropertyValueFactory<>("estado"));
     }
-
+    /**
+    * Ejecuta la acción configurarSeleccionTabla.
+    */
     private void configurarSeleccionTabla() {
         if (tablaMateriales != null) {
             tablaMateriales.getSelectionModel().selectedItemProperty().addListener((observable, viejaSeleccion, nuevaSeleccion) -> {
@@ -91,7 +110,9 @@ public class MaterialController {
             });
         }
     }
-
+    /**
+    * Ejecuta la acción cargarTabla.
+    */
     public void cargarTabla() {
         if (servicioDeMateriales == null || tablaMateriales == null) return;
         try {
@@ -105,6 +126,9 @@ public class MaterialController {
     }
 
     @FXML
+    /**
+    * Ejecuta la acción crearMaterial.
+    */
     public void crearMaterial() {
         try {
             String tipo = inputTipoMaterial.getText();
@@ -148,6 +172,9 @@ public class MaterialController {
     }
 
     @FXML
+    /**
+    * Ejecuta la acción modificarMaterial.
+    */
     public void modificarMaterial() {
         if (materialSeleccionado == null) {
             labelAvisosMaterial.setText("Selecciona un material primero.");
@@ -197,6 +224,9 @@ public class MaterialController {
     }
 
     @FXML
+    /**
+    * Ejecuta la acción darDeBajaMaterial.
+    */
     public void darDeBajaMaterial() {
         if (materialSeleccionado == null) {
             labelAvisosMaterial.setText("Selecciona un material primero.");
@@ -224,6 +254,9 @@ public class MaterialController {
     }
 
     @FXML
+    /**
+    * Ejecuta la acción darDeAltaMaterial.
+    */
     public void darDeAltaMaterial() {
         if (materialSeleccionado == null) {
             labelAvisosMaterial.setText("Selecciona un material primero.");
@@ -245,7 +278,9 @@ public class MaterialController {
             labelAvisosMaterial.setText("Error: " + error.getMessage());
         }
     }
-
+    /**
+    * Ejecuta la acción limpiarCampos.
+    */
     private void limpiarCampos() {
         inputTipoMaterial.clear();
         inputMarcaMaterial.clear();

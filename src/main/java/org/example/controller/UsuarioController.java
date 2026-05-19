@@ -14,7 +14,9 @@ import org.example.model.enums.EstadoGeneral;
 import org.example.service.UsuariosService;
 
 import java.util.List;
-
+/**
+     * Representa la clase UsuarioController.
+     */
 public class UsuarioController {
     
     private UsuariosService servicioDeUsuarios;
@@ -30,24 +32,34 @@ public class UsuarioController {
     @FXML private Label labelAvisosUsuario;
 
     private Usuario usuarioSeleccionado;
-
+    /**
+    * Ejecuta la acción setService.
+    * @param servicio el parámetro servicio
+    */
     public void setService(UsuariosService servicio) {
         this.servicioDeUsuarios = servicio;
         cargarTabla();
     }
 
     @FXML
+    /**
+    * Ejecuta la acción initialize.
+    */
     private void initialize() {
         inicializarColumnas();
         configurarSeleccionTabla();
     }
-
+    /**
+    * Ejecuta la acción inicializarColumnas.
+    */
     private void inicializarColumnas() {
         if (columnaIdUsuario != null) columnaIdUsuario.setCellValueFactory(new PropertyValueFactory<>("idUsuario"));
         if (columnaCorreoUsuario != null) columnaCorreoUsuario.setCellValueFactory(new PropertyValueFactory<>("correoElectronico"));
         if (columnaActivoUsuario != null) columnaActivoUsuario.setCellValueFactory(new PropertyValueFactory<>("estado"));
     }
-
+    /**
+    * Ejecuta la acción configurarSeleccionTabla.
+    */
     private void configurarSeleccionTabla() {
         if (tablaUsuarios != null) {
             tablaUsuarios.getSelectionModel().selectedItemProperty().addListener((observable, viejaSeleccion, nuevaSeleccion) -> {
@@ -60,7 +72,9 @@ public class UsuarioController {
             });
         }
     }
-
+    /**
+    * Ejecuta la acción cargarTabla.
+    */
     public void cargarTabla() {
         if (servicioDeUsuarios == null || tablaUsuarios == null) return;
         try {
@@ -74,6 +88,9 @@ public class UsuarioController {
     }
 
     @FXML
+    /**
+    * Ejecuta la acción crearUsuario.
+    */
     public void crearUsuario() {
         try {
             String nombre = inputNombreUsuario.getText();
@@ -95,6 +112,9 @@ public class UsuarioController {
     }
 
     @FXML
+    /**
+    * Ejecuta la acción modificarUsuario.
+    */
     public void modificarUsuario() {
         if (usuarioSeleccionado == null) {
             labelAvisosUsuario.setText("Selecciona un usuario primero.");
@@ -119,6 +139,9 @@ public class UsuarioController {
     }
 
     @FXML
+    /**
+    * Ejecuta la acción darDeBajaUsuario.
+    */
     public void darDeBajaUsuario() {
         if (usuarioSeleccionado == null) {
             labelAvisosUsuario.setText("Selecciona un usuario primero.");
@@ -136,6 +159,9 @@ public class UsuarioController {
     }
 
     @FXML
+    /**
+    * Ejecuta la acción darDeAltaUsuario.
+    */
     public void darDeAltaUsuario() {
         if (usuarioSeleccionado == null) {
             labelAvisosUsuario.setText("Selecciona un usuario primero.");
@@ -151,7 +177,9 @@ public class UsuarioController {
             labelAvisosUsuario.setText("Error: " + error.getMessage());
         }
     }
-
+    /**
+    * Ejecuta la acción limpiarCampos.
+    */
     private void limpiarCampos() {
         inputNombreUsuario.clear();
         inputCorreoUsuario.clear();

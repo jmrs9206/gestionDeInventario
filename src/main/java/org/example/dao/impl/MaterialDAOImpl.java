@@ -9,9 +9,16 @@ import org.example.model.enums.EstadoMaterial;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+     * Representa la clase MaterialDAOImpl.
+     */
 public class MaterialDAOImpl implements MaterialDAO {
-
+  /**
+  * Ejecuta la acción mapResultSetToMaterial.
+  * @param resultado el parámetro resultado
+  * @return el resultado de tipo Material
+  * @throws SQLException si ocurre un error
+  */
   private Material mapResultSetToMaterial(ResultSet resultado) throws SQLException {
     Material material = new Material();
     material.setIdMaterial(resultado.getInt("id_material"));
@@ -28,6 +35,11 @@ public class MaterialDAOImpl implements MaterialDAO {
   }
 
   @Override
+  /**
+  * Ejecuta la acción anadirMaterial.
+  * @param materialNuevo el parámetro materialNuevo
+  * @throws DatosException si ocurre un error
+  */
   public void anadirMaterial(Material materialNuevo) throws DatosException {
     String sql = "INSERT INTO materiales (tipo, marca, modelo, descripcion, estado, id_oficina) VALUES (?, ?, ?, ?, ?::estado_material, ?)";
     try (Connection conexion = ConexionBD.obtenerConexion();
@@ -57,6 +69,11 @@ public class MaterialDAOImpl implements MaterialDAO {
   }
 
   @Override
+  /**
+  * Ejecuta la acción cambiarDatosMaterial.
+  * @param materialModificado el parámetro materialModificado
+  * @throws DatosException si ocurre un error
+  */
   public void cambiarDatosMaterial(Material materialModificado) throws DatosException {
     StringBuilder sqlBuilder = new StringBuilder(
         "UPDATE materiales SET tipo = ?, marca = ?, modelo = ?, descripcion = ?, estado = ?::estado_material");
@@ -89,6 +106,12 @@ public class MaterialDAOImpl implements MaterialDAO {
   }
 
   @Override
+  /**
+  * Ejecuta la acción buscarMaterialPorId.
+  * @param idMaterial el parámetro idMaterial
+  * @return el resultado de tipo Material
+  * @throws DatosException si ocurre un error
+  */
   public Material buscarMaterialPorId(int idMaterial) throws DatosException {
     String sql = "SELECT * FROM materiales WHERE id_material = ?";
     Material materialEncontrado = null;
@@ -107,6 +130,11 @@ public class MaterialDAOImpl implements MaterialDAO {
   }
 
   @Override
+  /**
+  * Ejecuta la acción eliminarMaterial.
+  * @param idMaterial el parámetro idMaterial
+  * @throws DatosException si ocurre un error
+  */
   public void eliminarMaterial(int idMaterial) throws DatosException {
     String sql = "UPDATE materiales SET estado = 'BAJA'::estado_material WHERE id_material = ?";
     try (Connection conexion = ConexionBD.obtenerConexion();
@@ -119,6 +147,11 @@ public class MaterialDAOImpl implements MaterialDAO {
   }
 
   @Override
+  /**
+  * Ejecuta la acción obtenerTodosLosMateriales.
+  * @return el resultado de tipo List<Material>
+  * @throws DatosException si ocurre un error
+  */
   public List<Material> obtenerTodosLosMateriales() throws DatosException {
     List<Material> listaDeMateriales = new ArrayList<>();
     String sql = "SELECT * FROM materiales";

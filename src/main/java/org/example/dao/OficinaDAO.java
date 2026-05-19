@@ -4,7 +4,9 @@ import org.example.model.Oficina;
 import org.example.exception.DatosException;
 
 import java.util.List;
-
+/**
+     * Define la interfaz OficinaDAO.
+     */
 public interface OficinaDAO {
     void crearNuevaOficina(Oficina nuevaOficina) throws DatosException;
 

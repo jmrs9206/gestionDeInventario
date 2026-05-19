@@ -15,7 +15,9 @@ import org.example.service.OficinasService;
 import org.example.service.UsuariosService;
 
 import java.io.IOException;
-
+/**
+     * Representa la clase LoginController.
+     */
 public class LoginController {
   @FXML
   private TextField inputCorreo;
@@ -30,33 +32,54 @@ public class LoginController {
   private HistorialMaterialesService servicioDeHistorial;
 
   private Stage ventanaActual;
-
+  /**
+  * Ejecuta la acción asignarServicioUsuarios.
+  * @param servicio el parámetro servicio
+  */
   public void asignarServicioUsuarios(UsuariosService servicio) {
     this.servicioDeUsuarios = servicio;
   }
-
+  /**
+  * Ejecuta la acción asignarServicioOficinas.
+  * @param servicio el parámetro servicio
+  */
   public void asignarServicioOficinas(OficinasService servicio) {
     this.servicioDeOficinas = servicio;
   }
-
+  /**
+  * Ejecuta la acción asignarServicioMateriales.
+  * @param servicio el parámetro servicio
+  */
   public void asignarServicioMateriales(MaterialesService servicio) {
     this.servicioDeMateriales = servicio;
   }
-
+  /**
+  * Ejecuta la acción asignarServicioHistorial.
+  * @param servicio el parámetro servicio
+  */
   public void asignarServicioHistorial(HistorialMaterialesService servicio) {
     this.servicioDeHistorial = servicio;
   }
-
+  /**
+  * Ejecuta la acción asignarVentana.
+  * @param ventana el parámetro ventana
+  */
   public void asignarVentana(Stage ventana) {
     this.ventanaActual = ventana;
   }
 
   @FXML
+  /**
+  * Ejecuta la acción initialize.
+  */
   private void initialize() {
     labelAvisosLogin.setText("");
   }
 
   @FXML
+  /**
+  * Ejecuta la acción pulsarBotonEntrar.
+  */
   private void pulsarBotonEntrar() {
     String correoEscrito = inputCorreo.getText();
     String claveEscrita = inputContrasena.getText();
@@ -75,7 +98,11 @@ public class LoginController {
       labelAvisosLogin.setText(errorDeLogin.getMessage());
     }
   }
-
+  /**
+  * Ejecuta la acción abrirPantallaPrincipal.
+  * @param usuarioQueHaEntrado el parámetro usuarioQueHaEntrado
+  * @throws IOException si ocurre un error
+  */
   private void abrirPantallaPrincipal(Usuario usuarioQueHaEntrado) throws IOException {
     FXMLLoader cargador = new FXMLLoader(getClass().getResource("/view/dashboard.fxml"));
     Parent vista = cargador.load();

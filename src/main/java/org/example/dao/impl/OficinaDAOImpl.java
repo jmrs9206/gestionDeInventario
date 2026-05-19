@@ -9,9 +9,16 @@ import org.example.model.enums.EstadoGeneral;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+     * Representa la clase OficinaDAOImpl.
+     */
 public class OficinaDAOImpl implements OficinaDAO {
-
+    /**
+    * Ejecuta la acción mapResultSetToOficina.
+    * @param resultado el parámetro resultado
+    * @return el resultado de tipo Oficina
+    * @throws SQLException si ocurre un error
+    */
     private Oficina mapResultSetToOficina(ResultSet resultado) throws SQLException {
         Oficina oficina = new Oficina();
         oficina.setIdOficina(resultado.getInt("id_oficina"));
@@ -24,6 +31,11 @@ public class OficinaDAOImpl implements OficinaDAO {
     }
 
     @Override
+    /**
+    * Ejecuta la acción crearNuevaOficina.
+    * @param nuevaOficina el parámetro nuevaOficina
+    * @throws DatosException si ocurre un error
+    */
     public void crearNuevaOficina(Oficina nuevaOficina) throws DatosException {
         String sql = "INSERT INTO oficinas (nombre, estado) VALUES (?, ?::estado_general)";
         try (Connection conexion = ConexionBD.obtenerConexion();
@@ -44,6 +56,11 @@ public class OficinaDAOImpl implements OficinaDAO {
     }
 
     @Override
+    /**
+    * Ejecuta la acción modificarOficina.
+    * @param oficinaAModificar el parámetro oficinaAModificar
+    * @throws DatosException si ocurre un error
+    */
     public void modificarOficina(Oficina oficinaAModificar) throws DatosException {
         String sql = "UPDATE oficinas SET nombre = ?, estado = ?::estado_general WHERE id_oficina = ?";
 
@@ -60,6 +77,11 @@ public class OficinaDAOImpl implements OficinaDAO {
     }
 
     @Override
+    /**
+    * Ejecuta la acción eliminarOficina.
+    * @param idDeLaOficina el parámetro idDeLaOficina
+    * @throws DatosException si ocurre un error
+    */
     public void eliminarOficina(int idDeLaOficina) throws DatosException {
         String sql = "UPDATE oficinas SET estado = 'BAJA'::estado_general WHERE id_oficina = ?";
         try (Connection conexion = ConexionBD.obtenerConexion();
@@ -72,6 +94,12 @@ public class OficinaDAOImpl implements OficinaDAO {
     }
 
     @Override
+    /**
+    * Ejecuta la acción buscarOficinaPorSuId.
+    * @param idDeLaOficina el parámetro idDeLaOficina
+    * @return el resultado de tipo Oficina
+    * @throws DatosException si ocurre un error
+    */
     public Oficina buscarOficinaPorSuId(int idDeLaOficina) throws DatosException {
         String sql = "SELECT * FROM oficinas WHERE id_oficina = ?";
         Oficina oficinaEncontrada = null;
@@ -91,6 +119,11 @@ public class OficinaDAOImpl implements OficinaDAO {
     }
 
     @Override
+    /**
+    * Ejecuta la acción obtenerTodasLasOficinas.
+    * @return el resultado de tipo List<Oficina>
+    * @throws DatosException si ocurre un error
+    */
     public List<Oficina> obtenerTodasLasOficinas() throws DatosException {
         List<Oficina> listaDeOficinas = new ArrayList<>();
         String sql = "SELECT * FROM oficinas";

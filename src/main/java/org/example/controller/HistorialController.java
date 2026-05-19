@@ -13,7 +13,9 @@ import org.example.service.HistorialMaterialesService;
 
 import java.time.LocalDate;
 import java.util.List;
-
+/**
+     * Representa la clase HistorialController.
+     */
 public class HistorialController {
 
     private HistorialMaterialesService servicioDeHistorial;
@@ -29,17 +31,25 @@ public class HistorialController {
     @FXML private TableColumn<HistorialMateriales, String> columnaModeloMaterialHistorial;
     @FXML private TableColumn<HistorialMateriales, String> columnaNotasHistorial;
     @FXML private Label labelAvisosHistorial;
-
+    /**
+    * Ejecuta la acción setService.
+    * @param servicio el parámetro servicio
+    */
     public void setService(HistorialMaterialesService servicio) {
         this.servicioDeHistorial = servicio;
         cargarListaHistorial();
     }
 
     @FXML
+    /**
+    * Ejecuta la acción initialize.
+    */
     private void initialize() {
         prepararTablaHistorial();
     }
-
+    /**
+    * Ejecuta la acción prepararTablaHistorial.
+    */
     private void prepararTablaHistorial() {
         if (columnaIdRegistro != null) columnaIdRegistro.setCellValueFactory(new PropertyValueFactory<>("id"));
         if (columnaFechaRegistro != null) columnaFechaRegistro.setCellValueFactory(new PropertyValueFactory<>("fecha"));
@@ -51,7 +61,9 @@ public class HistorialController {
         if (columnaIdUsuarioResponsable != null) columnaIdUsuarioResponsable.setCellValueFactory(new PropertyValueFactory<>("usuario"));
         if (columnaNotasHistorial != null) columnaNotasHistorial.setCellValueFactory(new PropertyValueFactory<>("observacion"));
     }
-
+    /**
+    * Ejecuta la acción cargarListaHistorial.
+    */
     public void cargarListaHistorial() {
         if (servicioDeHistorial == null || tablaHistorial == null) return;
         try {

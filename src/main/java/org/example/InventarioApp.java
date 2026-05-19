@@ -16,12 +16,21 @@ import org.example.service.OficinasService;
 import org.example.service.UsuariosService;
 
 import java.io.IOException;
-
+/**
+     * Representa la clase InventarioApp.
+     */
 public class InventarioApp {
-
+    /**
+     * Representa la clase AplicacionVisual.
+     */
     public static class AplicacionVisual extends Application {
 
         @Override
+        /**
+        * Ejecuta la acción start.
+        * @param ventanaPrincipal el parámetro ventanaPrincipal
+        * @throws IOException si ocurre un error
+        */
         public void start(Stage ventanaPrincipal) throws IOException {
 
             UsuarioDAOImpl conexionUsuarios = new UsuarioDAOImpl();
@@ -50,7 +59,10 @@ public class InventarioApp {
             ventanaPrincipal.show();
         }
     }
-
+    /**
+    * Ejecuta la acción main.
+    * @param args el parámetro args
+    */
     public static void main(String[] args) {
         Application.launch(AplicacionVisual.class, args);
     }

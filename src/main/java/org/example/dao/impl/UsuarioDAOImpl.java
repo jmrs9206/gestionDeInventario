@@ -9,9 +9,16 @@ import org.example.model.enums.EstadoGeneral;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+     * Representa la clase UsuarioDAOImpl.
+     */
 public class UsuarioDAOImpl implements UsuarioDAO {
-
+    /**
+    * Ejecuta la acción mapResultSetToUsuario.
+    * @param resultado el parámetro resultado
+    * @return el resultado de tipo Usuario
+    * @throws SQLException si ocurre un error
+    */
     private Usuario mapResultSetToUsuario(ResultSet resultado) throws SQLException {
         Usuario usuario = new Usuario();
         usuario.setIdUsuario(resultado.getInt("id_usuario"));
@@ -26,6 +33,11 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     }
 
     @Override
+    /**
+    * Ejecuta la acción crearNuevoUsuario.
+    * @param nuevoUsuario el parámetro nuevoUsuario
+    * @throws DatosException si ocurre un error
+    */
     public void crearNuevoUsuario(Usuario nuevoUsuario) throws DatosException {
         String sql = "INSERT INTO usuarios (nombre, email, password, estado) VALUES (?, ?, ?, ?::estado_general)";
         try (Connection conexion = ConexionBD.obtenerConexion();
@@ -48,6 +60,11 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     }
 
     @Override
+    /**
+    * Ejecuta la acción modificarUsuarioExistente.
+    * @param usuarioModificado el parámetro usuarioModificado
+    * @throws DatosException si ocurre un error
+    */
     public void modificarUsuarioExistente(Usuario usuarioModificado) throws DatosException {
         StringBuilder sqlBuilder = new StringBuilder(
                 "UPDATE usuarios SET nombre = ?, email = ?, estado = ?::estado_general");
@@ -76,6 +93,11 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     }
 
     @Override
+    /**
+    * Ejecuta la acción eliminarUsuario.
+    * @param idDelUsuario el parámetro idDelUsuario
+    * @throws DatosException si ocurre un error
+    */
     public void eliminarUsuario(int idDelUsuario) throws DatosException {
         String sql = "UPDATE usuarios SET estado = 'BAJA'::estado_general WHERE id_usuario = ?";
         try (Connection conexion = ConexionBD.obtenerConexion();
@@ -88,6 +110,12 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     }
 
     @Override
+    /**
+    * Ejecuta la acción buscarUsuarioPorSuId.
+    * @param idDelUsuario el parámetro idDelUsuario
+    * @return el resultado de tipo Usuario
+    * @throws DatosException si ocurre un error
+    */
     public Usuario buscarUsuarioPorSuId(int idDelUsuario) throws DatosException {
         String sql = "SELECT * FROM usuarios WHERE id_usuario = ?";
         Usuario usuarioEncontrado = null;
@@ -106,6 +134,12 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     }
 
     @Override
+    /**
+    * Ejecuta la acción buscarUsuarioPorSuCorreo.
+    * @param correoDelUsuario el parámetro correoDelUsuario
+    * @return el resultado de tipo Usuario
+    * @throws DatosException si ocurre un error
+    */
     public Usuario buscarUsuarioPorSuCorreo(String correoDelUsuario) throws DatosException {
         String sql = "SELECT * FROM usuarios WHERE email = ?";
         Usuario usuarioEncontrado = null;
@@ -124,6 +158,11 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     }
 
     @Override
+    /**
+    * Ejecuta la acción obtenerTodosLosUsuarios.
+    * @return el resultado de tipo List<Usuario>
+    * @throws DatosException si ocurre un error
+    */
     public List<Usuario> obtenerTodosLosUsuarios() throws DatosException {
         String sql = "SELECT * FROM usuarios ORDER BY id_usuario";
         List<Usuario> listaUsuarios = new ArrayList<>();

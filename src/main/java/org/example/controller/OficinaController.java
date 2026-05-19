@@ -13,7 +13,9 @@ import org.example.model.enums.EstadoGeneral;
 import org.example.service.OficinasService;
 
 import java.util.List;
-
+/**
+     * Representa la clase OficinaController.
+     */
 public class OficinaController {
     
     private OficinasService servicioDeOficinas;
@@ -27,24 +29,34 @@ public class OficinaController {
     @FXML private Label labelAvisosOficina;
 
     private Oficina oficinaSeleccionada;
-
+    /**
+    * Ejecuta la acción setServicio.
+    * @param servicio el parámetro servicio
+    */
     public void setServicio(OficinasService servicio) {
         this.servicioDeOficinas = servicio;
         cargarTabla();
     }
 
     @FXML
+    /**
+    * Ejecuta la acción initialize.
+    */
     private void initialize() {
         inicializarColumnas();
         configurarSeleccionTabla();
     }
-
+    /**
+    * Ejecuta la acción inicializarColumnas.
+    */
     private void inicializarColumnas() {
         if (columnaIdOficina != null) columnaIdOficina.setCellValueFactory(new PropertyValueFactory<>("idOficina"));
         if (columnaNombreOficina != null) columnaNombreOficina.setCellValueFactory(new PropertyValueFactory<>("nombreOficina"));
         if (columnaActivoOficina != null) columnaActivoOficina.setCellValueFactory(new PropertyValueFactory<>("estado"));
     }
-
+    /**
+    * Ejecuta la acción configurarSeleccionTabla.
+    */
     private void configurarSeleccionTabla() {
         if (tablaOficinas != null) {
             tablaOficinas.getSelectionModel().selectedItemProperty().addListener((observable, viejaSeleccion, nuevaSeleccion) -> {
@@ -56,7 +68,9 @@ public class OficinaController {
             });
         }
     }
-
+    /**
+    * Ejecuta la acción cargarTabla.
+    */
     public void cargarTabla() {
         if (servicioDeOficinas == null || tablaOficinas == null) return;
         try {
@@ -70,6 +84,9 @@ public class OficinaController {
     }
 
     @FXML
+    /**
+    * Ejecuta la acción crearOficina.
+    */
     public void crearOficina() {
         String nombreQueHanEscrito = inputNombreOficina.getText();
         
@@ -84,6 +101,9 @@ public class OficinaController {
     }
 
     @FXML
+    /**
+    * Ejecuta la acción modificarOficina.
+    */
     public void modificarOficina() {
         if (oficinaSeleccionada == null) {
             labelAvisosOficina.setText("Selecciona una oficina primero.");
@@ -106,6 +126,9 @@ public class OficinaController {
     }
 
     @FXML
+    /**
+    * Ejecuta la acción cerrarOficina.
+    */
     public void cerrarOficina() {
         if (oficinaSeleccionada == null) {
             labelAvisosOficina.setText("Selecciona una oficina primero.");
@@ -125,6 +148,9 @@ public class OficinaController {
     }
 
     @FXML
+    /**
+    * Ejecuta la acción reabrirOficina.
+    */
     public void reabrirOficina() {
         if (oficinaSeleccionada == null) {
             labelAvisosOficina.setText("Selecciona una oficina primero.");
