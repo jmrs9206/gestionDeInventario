@@ -43,7 +43,7 @@ Antes de proceder con la ejecución del proyecto, asegúrese de tener instalados
 
 ### Paso 1: Crear la Base de Datos
 
-Acceda a su terminal de PostgreSQL (vía `psql` o mediante un cliente visual como **pgAdmin 4** o **DBeaver**) y cree una nueva base de datos llamada `inventario`:
+Acceda a su terminal de PostgreSQL (Mediante un cliente visual como **pgAdmin 4** o **DBeaver**) y cree una nueva base de datos llamada `inventario`:
 
 ```sql
 CREATE DATABASE inventario;
@@ -72,16 +72,16 @@ El proyecto está preparado para ser levantado directamente desde la terminal co
 
 ### Compilar y Descargar Dependencias
 
-```bash
-mvn clean compile
+```
+Presionas dos veces la tecla Ctrl y digitas: mvn clean compile o mvn clean package
 ```
 
 ### Ejecutar la Aplicación
 
 Inicie el entorno gráfico de JavaFX con el siguiente comando nativo de Maven o **Run InventarioApp.java**:
 
-```bash
-mvn javafx:run
+```
+Le das clic en run desde InventarioApp.java que sería nuestro main
 ```
 
 ---
